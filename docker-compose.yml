@@ -1,0 +1,54 @@
+version: '3'
+# version: '3.8'
+# Definimos una aplicación con 3 servicios
+services: 
+# Servicio: apache/php con aplicación CRUD
+  apache:
+    #image: httpd
+    #image: ubuntu/apache2 (comunidad apache. Tiene apache pero necesita php)
+    #image: php:8.2-apache (imagen oficial de php con apache. Optimizada. Usa como base una Debian)
+    #image: webdevops/php-apache (Basada en ubuntu. Lista para usar)
+    #image: wordpress: latest (imagen oficial de Wordpress. Última versión. Tiene apache y php integrado)
+    #image: wordpress:php8.1-apache (versión específica con PHP 8.1 y apache)
+
+
+    image: lumigv/lamp-crud-app:1.0
+    ports: 
+      - 80:80
+    depends_on:
+      - mariadb
+# Servicio: 
+  mariadb:
+    # image: mariadb: latest
+    # image: mariadb: 10.6 (Versión específica de MariaDB 10.7)
+    # image: mariadb:alpine (Versión ligera basada en Alpine)
+    image: mariadb
+    ports:
+      - 3306:3306
+    environment: 
+# El acceso a las variables de entorno puede ser de dos maneras: $MARIADB_DATABASE ó ${MARIADB_DATABASE}
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      - MARIADB_DATABASE=${MARIADB_DATABASE}
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - LANG=C.UTF-8
+    volumes:
+      - mariadb_data:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d 
+    restart: always
+  
+  phpmyadmin:
+    #image: phpmyadmin/phpmyadmin (última versión estable. Recomendado)
+    #image: phpmyadmin/phpmyadmin:5.2 (versión específica)
+    #image: phpmyadmin/phpmyadmin:apache (Versión con apache en vez de nginx)
+    #image: phpmyadmin/phpmyadmin:alpine (versión mas ligera basada en Alpine Linux)
+    image: phpmyadmin
+    ports:
+      - 8080:80
+    environment:
+      - PMA_HOST=mariadb
+    depends_on: 
+      - mariadb
+volumes:
+  mariadb_data:
+  
