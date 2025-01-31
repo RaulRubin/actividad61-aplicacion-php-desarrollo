@@ -4,7 +4,12 @@ version: '3'
 services: 
 # Servicio: apache/php con aplicación CRUD
   apache:
+    # Ubuntu
+    #image: ubuntu
+    #image: ubuntu: latest
+    # Apache
     #image: httpd
+    #image: bitnami/apache (optimizada con mejoras de seguridad)
     #image: ubuntu/apache2 (comunidad apache. Tiene apache pero necesita php)
     #image: php:8.2-apache (imagen oficial de php con apache. Optimizada. Usa como base una Debian)
     #image: webdevops/php-apache (Basada en ubuntu. Lista para usar)
