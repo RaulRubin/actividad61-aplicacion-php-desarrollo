@@ -37,21 +37,7 @@ $result = mysqli_query($mysqli, "UPDATE users SET name = '$name', surname = '$su
 mysqli_close($mysqli);
 
 echo "Bloque3\n";
-//$stmt = mysqli_prepare($mysqli, "UPDATE users SET name=?,surname=?,age=? WHERE id=?");
-/*Enlaza variables como parámetros a una setencia preparada. 
-i: La variable correspondiente tiene tipo entero
-d: La variable correspondiente tiene tipo doble
-s:	La variable correspondiente tiene tipo cadena
-*/				
-//		mysqli_stmt_bind_param($stmt, "ssii", $name, $surname, $age, $id);
-//Ejecuta una consulta preparada			
-//		mysqli_stmt_execute($stmt);
-//Libera la memoria donde se almacenó el resultado
-//		mysqli_stmt_free_result($stmt);
-//Cierra la sentencia preparada		
-//		mysqli_stmt_close($stmt);
-
-		header("Location: index.php");
+header("Location: index.php");
 	}// fin sino
 }//fin si
 ?>
@@ -69,22 +55,6 @@ $name = $resultData['name'];
 $surname = $resultData['surname'];
 $age = $resultData['age'];
 
-
-//Prepara una sentencia SQL para su ejecución. En este caso selecciona el registro a modificar y lo muestra en el formulario.				
-//$stmt = mysqli_prepare($mysqli, "SELECT name, surname, age FROM users WHERE id=?");
-//Enlaza variables como parámetros a una setencia preparada. 
-//mysqli_stmt_bind_param($stmt, "i", $id);
-//Ejecuta una consulta preparada
-//mysqli_stmt_execute($stmt);
-//Enlaza variables a una setencia preparada para el almacenamiento del resultado
-//mysqli_stmt_bind_result($stmt, $name, $surname, $age);
-//Obtiene el resultado de una sentencia SQL preparada en las variables enlazadas
-//mysqli_stmt_fetch($stmt);
-//Libera la memoria donde se almacenó el resultado		
-//mysqli_stmt_free_result($stmt);
-//Cierra la sentencia preparada
-//mysqli_stmt_close($stmt);
-//Cierra la conexión de base de datos previamente abierta
 mysqli_close($mysqli);
 ?>
 

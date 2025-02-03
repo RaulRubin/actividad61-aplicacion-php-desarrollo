@@ -1,53 +1,53 @@
-version: '3'
-# version: '3.8'
-# Definimos una aplicación con 3 servicios
+# La directiva version se considera obsoleta
+#version: '3'
+#version: '3.8'
+# Definimos una aplicación con 3 servicios (microservicios)
 services: 
-# Servicio: apache/php con aplicación CRUD
+# Servicio 1: Definimos el servicio apache. Utilizamos imagen: debian+apache+PHP para crear los contenedores del servicio.
   apache:
-    # Ubuntu
-    #image: ubuntu
-    #image: ubuntu: latest
-    # Apache
-    #image: httpd
-    #image: bitnami/apache (optimizada con mejoras de seguridad)
-    #image: ubuntu/apache2 (comunidad apache. Tiene apache pero necesita php)
-    #image: php:8.2-apache (imagen oficial de php con apache. Optimizada. Usa como base una Debian)
-    #image: webdevops/php-apache (Basada en ubuntu. Lista para usar)
-    #image: wordpress: latest (imagen oficial de Wordpress. Última versión. Tiene apache y php integrado)
-    #image: wordpress:php8.1-apache (versión específica con PHP 8.1 y apache)
-
-
-    image: lumigv/lamp-crud-app:1.0
+    image: php:8.2-apache 
+    #build: /.
+# Publica el puerto 80 del contenedor como 80 en la red del host de docker    
     ports: 
       - 80:80
+# Establecemos una lista de variables de entorno que pueden ser utilizadas por los contenedores del servicio
+    environment: 
+      - DB_HOST=mariadb
+      - DB_NAME=${MARIADB_DATABASE}
+      - DB_USER=${MARIADB_USER}
+      - DB_PASSWORD=${MARIADB_PASSWORD}
+
+    volumes:
+# Uno de tipo volumen y otro de tip "bind-mount"
+      - ./src:/var/www/html 
     depends_on:
       - mariadb
-# Servicio: 
+
+
+# Servicio 2: mariadb
+
   mariadb:
-    # image: mariadb: latest
-    # image: mariadb: 10.6 (Versión específica de MariaDB 10.7)
-    # image: mariadb:alpine (Versión ligera basada en Alpine)
     image: mariadb
     ports:
       - 3306:3306
     environment: 
-# El acceso a las variables de entorno puede ser de dos maneras: $MARIADB_DATABASE ó ${MARIADB_DATABASE}
+# El acceso a las variables de entorno puede ser de dos maneras: $MARIADB_DATABASE ó ${MARIADB_DATABASE} utilizan el valor de la variable MARIADB_DATABASE definida en .env
       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
       - MARIADB_DATABASE=${MARIADB_DATABASE}
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PASSWORD=${MARIADB_PASSWORD}
       - LANG=C.UTF-8
     volumes:
+# Uno de tipo volumen y otro de tip "bind-mount"
+# Crea un volumen en el host de docker con el nombre de mariadb_data que almacena el directorio /var/lib/mysql del contenedor
       - mariadb_data:/var/lib/mysql
+#  Las imágenes mysql y mariadb están diseñadas para ejecutar los archivos con extensión .sh, .sql que se encuentran en el directorio /docker-entrypoint-initdb.d del contenedor. Estos archivos se ejecutarán por orden alfabético.
       - ./sql:/docker-entrypoint-initdb.d 
-    restart: always
   
+# Servicio 3: phpmyadmin
   phpmyadmin:
-    #image: phpmyadmin/phpmyadmin (última versión estable. Recomendado)
-    #image: phpmyadmin/phpmyadmin:5.2 (versión específica)
-    #image: phpmyadmin/phpmyadmin:apache (Versión con apache en vez de nginx)
-    #image: phpmyadmin/phpmyadmin:alpine (versión mas ligera basada en Alpine Linux)
     image: phpmyadmin
+# Publica el puerto 80 del contenedor como 8080 en la red del host de docker    
     ports:
       - 8080:80
     environment:
@@ -56,4 +56,3 @@ services:
       - mariadb
 volumes:
   mariadb_data:
-  

@@ -61,25 +61,10 @@ Los caracteres codificados son NUL (ASCII 0), \n, \r, \, ', ", y Control-Z.*/
 	} //fin si
 	else 
 	{
-//Prepara una sentencia SQL para su ejecución. En este caso el alta de un registro de la BD.	
+//Ejecuta una sentencia SQL. En este caso el alta de un registro de la BD.	
 		$result = mysqli_query($mysqli, "INSERT INTO users (name, surname, age) VALUES ('$name', '$surname', '$age')");	
-	
 		echo "Bloque3\n";
-//		$stmt = mysqli_prepare($mysqli, "INSERT INTO users (name,surname,age) VALUES(?,?,?)");
-/*Enlaza variables como parámetros a una setencia preparada. 
-i: La variable correspondiente tiene tipo entero
-d: La variable correspondiente tiene tipo doble
-s:	La variable correspondiente tiene tipo cadena
-*/		
-//		mysqli_stmt_bind_param($stmt, "ssi", $name, $surname, $age);
-//Ejecuta una consulta preparada		
-//		mysqli_stmt_execute( $stmt);
-//Libera la memoria donde se almacenó el resultado		
-//		mysqli_stmt_free_result($stmt);
-//Cierra la sentencia preparada		
-//		mysqli_stmt_close($stmt);
-//Muestra mensaje exitoso		
-		echo "<div>Datos añadidos correctamente</div>";
+//		echo "<div>Datos añadidos correctamente</div>";
 		echo "<a href='index.php'>Ver resultado</a>";
 	}//fin sino
 }
