@@ -9,26 +9,18 @@ En PHP los datos se administran con el array asociativo $_GET.
 2.- Método HTTP POST. Información se envía de forma no visible. A través del cuerpo del HTTP Request 
 PHP proporciona el array asociativo $_POST para acceder a la información enviada.
 */
+
+
 $id = $_GET['id'];
 
-//Prepara una sentencia SQL para su ejecución. En este caso el borrado de un registro de la BD.
+echo "Estamos en el borrado\n";
 
-$result = mysqli_query($mysqli, "DELETE FROM users WHERE id = $id");
+//Realiza el borrado del registro: delete.
+$result = $mysqli->query("DELETE FROM empleados WHERE id = $id");
 
-
-//$stmt = mysqli_prepare($mysqli, "DELETE FROM users WHERE id=?");
-/*Enlaza variables como parámetros a una setencia preparada. 
-i: La variable correspondiente tiene tipo entero
-d: La variable correspondiente tiene tipo doble
-s:	La variable correspondiente tiene tipo cadena
-*/
-//mysqli_stmt_bind_param($stmt, "i", $id);
-//Ejecuta una consulta preparada
-//mysqli_stmt_execute($stmt);
-//Cierra la sentencia preparada
-//mysqli_stmt_close($stmt);
 //Cierra la conexión de base de datos previamente abierta
-mysqli_close($mysqli);
+$mysqli->close();
+
 //Redirige a la página principal: index.php
 header("Location:index.php");
 ?>

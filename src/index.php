@@ -3,14 +3,18 @@
 DB_HOST: Nombre o dirección del gestor de BD MariaDB
 DB_NAME: Nombre de la BD
 DB_USER: Usuario de la BD
-DB_PASSWORD: Contraseña del usuario e la BD
+DB_PASSWORD: Contraseña del usuario de la BD
 */
 
 include_once("config.php");
 
 //Consulta de selección. Selecciona todos los usuarios ordenados de manera descendente por el campo id
 
-$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
+//$result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
+
+
+//Selecciona todos los registros para proceder a un listado de los mismos: select. Los almacena en una "tabla especial" llamada $resultado. Cada fila es un registro, y cada columna es un campo del mismo.
+$resultado = $mysqli->query("SELECT * FROM empleados ORDER BY apellido, nombre");
 
 ?>
 
@@ -19,7 +23,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Panel de control</title>
+	<title>Electroshop S.L.</title>
 	<!--bootstrap-->
 	<!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
 	<!--
@@ -33,7 +37,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
 -->
 <div>
 	<header>
-		<h1>Panel de Control</h1>
+		<h1>ELECTROSHOP S.L.</h1>
 	</header>
 
 	<main>
@@ -41,7 +45,7 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
 		<li><a href="index.php">Inicio</a></li>
 		<li><a href="add.html">Alta</a></li>
 	</ul>
-	<h2>Listado de trabajador@s</h2>
+	<h2>Recursos humanos</h2>
 	<table border="1">
 	<thead>
 		<tr>
@@ -53,33 +57,39 @@ $result = mysqli_query($mysqli, "SELECT * FROM users ORDER BY name");
 	</thead>
 	<tbdody>
 <?php
-/*mysqli_fetch_array- Busca una fila de una consulta y devuelve un array asociativo
+/*
+A continuación indicamos distintos métodos que leen línea a línea cada fila de la tabla:
+mysqli_fetch_array()- Busca una fila de una consulta y devuelve un array asociativo, numérico o ambos
+mysqli_fetch_assoc()- Busca una fila de una consulta y devuelve un array asociativo
+mysqli_fetch_row() - Busca una fila de una consulta y devuelve un array numérico
+Veamos la diferencia entre un array numérico y asosiativo:
 ARRAYS CON ÍNDICE
-$productos = array();
-$productos[0] = "Disco SSD";
-$productos[1] = "Memoria RAM";
-$productos[2] = "Monitor";
+$fila = array();
+$fila[0] = "7";
+$fila[1] = "Pedro";
+$fila[2] = "Zapata";
+$fila[3] = "23";
 ARRAYS ASOCIATIVO:
 $res["id"] = "7";
-$res["name"] = "Pedro";
-$res["surname"] = "Zapata";
-$res["age"] = "23";
+$res["nombre"] = "Pedro";
+$res["apellido"] = "Zapata";
+$res["edad"] = "23";
 */
 //Genera la tabla de la página inicial
-	while($res = mysqli_fetch_array($result)) {
+	while($fila = $resultado->fetch_array()) {
 		echo "<tr>\n";
-		echo "<td>".$res['name']."</td>\n";
-		echo "<td>".$res['surname']."</td>\n";
-		echo "<td>".$res['age']."</td>\n";
+		echo "<td>".$fila['nombre']."</td>\n";
+		echo "<td>".$fila['apellido']."</td>\n";
+		echo "<td>".$fila['edad']."</td>\n";
 		echo "<td>";
 //En la última columna se añader dos enlaces para editar y modificar el registro correspondiente. Se le pasa por el método GET el id del registro		
-		echo "<a href=\"edit.php?id=$res[id]\">Editar</a>\n";
-		echo "<a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('¿Está segur@ que desea eliminar el registro?')\" >Eliminar</a></td>\n";
+		echo "<a href=\"edit.php?id=$fila[id]\">Edición</a>\n";
+		echo "<a href=\"delete.php?id=$fila[id]\" onClick=\"return confirm('¿Está segur@ que desea eliminar el registro?')\" >Baja</a></td>\n";
 		echo "</td>";
 		echo "</tr>\n";
 	}
 //Cierra la conexión de BD previamente abierta
-	mysqli_close($mysqli);
+	$mysql->close();
 	?>
 	</tbdody>
 	</table>

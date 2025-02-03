@@ -23,9 +23,9 @@ RUN apt-get update \
 # Se pueden sobreescribir con la opción --env de docker run 
 
 ENV DB_HOST mariadb
-ENV DB_NAME crud_db
-ENV DB_USER crud_user
-ENV DB_PASSWORD crud_password
+ENV DB_NAME electroshop
+ENV DB_USER usuario
+ENV DB_PASSWORD usuario1
 
 # La instrucción EXPOSE no publica el puerto al exterior, solo informa a Docker.
 EXPOSE 80

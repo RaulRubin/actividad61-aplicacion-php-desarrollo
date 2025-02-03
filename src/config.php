@@ -15,17 +15,19 @@ define('DB_PASSWORD', getenv('DB_PASSWORD'));
 /*
 Otra alternativa es definir directamente los parámetros de conexión:
 define('DB_HOST', 'mariadb');
-define('DB_NAME', 'database_name_here');
-define('DB_USER', 'username_here');
-define('DB_PASSWORD', 'password_here');
+define('DB_NAME', 'electroshop');
+define('DB_USER', 'usuario');
+define('DB_PASSWORD', 'usuario@1');
 */
-
 
 //Abre una nueva conexión al servidor MySQL/MariaDB
 echo "Conexion Antes\n";
-$mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+//$mysqli = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+$mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+//$mysqli = new mysqli('mariadb', 'usuario', 'usuario1', 'electroshop');
 //Devuelve una descripción del último error producido en la conexión a la BD
-if (mysqli_connect_errno()) {
+//if (mysqli_connect_errno()) {
+if ($mysqli->connect_error) {
     printf('Falló la conexión: %s\n', mysqli_connect_error());
     exit();
 }

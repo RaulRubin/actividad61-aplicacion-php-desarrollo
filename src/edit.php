@@ -7,10 +7,10 @@ En este caso comprueba la información "modifica" procedente del botón Guardae 
 Transacción de datos utilizando el método: POST
 */
 if(isset($_POST['modifica'])) {
-	$id = mysqli_real_escape_string($mysqli, $_POST['id']);
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$surname = mysqli_real_escape_string($mysqli, $_POST['surname']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
+	$id = $mysqli->real_escape_string($_POST['id']);
+	$name = $mysqli->real_escape_string($_POST['name']);
+	$surname = $mysqli->real_escape_string($_POST['surname']);
+	$age = $mysqli->real_escape_string($_POST['age']);
 
 	echo "Bloque1\n";
 
@@ -33,8 +33,10 @@ if(isset($_POST['modifica'])) {
 
 echo "Bloque2\n";
 
-$result = mysqli_query($mysqli, "UPDATE users SET name = '$name', surname = '$surname',  age = '$age' WHERE `id` = $id");
-mysqli_close($mysqli);
+//Actualiza el registro a modificar: update
+$mysqli->query("UPDATE empleados SET nombre = '$name', apellido = '$surname',  edad = '$age' WHERE id = $id");
+$mysqli->close();
+
 
 echo "Bloque3\n";
 header("Location: index.php");
@@ -47,15 +49,23 @@ header("Location: index.php");
 /*Obtiene el id del dato a modificar a partir de la URL. Transacción de datos utilizando el método: GET*/
 $id = $_GET['id'];
 
-$id = mysqli_real_escape_string($mysqli, $id);
+$id = $mysqli->real_escape_string($id);
 
-$result = mysqli_query($mysqli, "SELECT name, surname, age FROM users WHERE id = $id");
-$resultData = mysqli_fetch_assoc($result);
-$name = $resultData['name'];
-$surname = $resultData['surname'];
-$age = $resultData['age'];
+//Selecciona el registro a modificar: select
+$resultado = $mysqli->query("SELECT apellido, nombre, edad FROM empleados WHERE id = $id");
 
-mysqli_close($mysqli);
+//Extrae el registro y lo guarda en el array $fila
+//$fila = $resultado->fetch_assoc();
+$fila = $resultado->fetch_array();
+$surname = $fila['apellido'];
+echo "El apellido es: $surname.\n";
+$name = $fila['nombre'];
+echo "El nombre es: $name.\n";
+$age = $fila['edad'];
+echo "La edad es: $age.\n";
+
+//Cierra la conexión de base de datos
+$mysqli->close();
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +73,7 @@ mysqli_close($mysqli);
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Modificación trabajador/a</title>
+	<title>Electroshop S.L.</title>
 <!--	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 -->
@@ -75,7 +85,7 @@ mysqli_close($mysqli);
 -->
 <div>
 	<header>
-		<h1>Panel de Control</h1>
+		<h1>ELECTROSHOP S.L.</h1>
 	</header>
 	
 	<main>				
@@ -116,3 +126,4 @@ Al hacer click en el botón Guardar, llama a esta misma página: edit.php-->
 </div>
 </body>
 </html>
+

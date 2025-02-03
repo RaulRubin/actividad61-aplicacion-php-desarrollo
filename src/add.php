@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Alta trabajador</title>
+	<title>Alta empleados</title>
 <!--	
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 -->	
@@ -33,14 +33,18 @@ Transacción de datos utilizando el método: POST
 if(isset($_POST['inserta'])) 
 {
 //Obtiene los datos (name, surname y age) a partir del formulario de alta por el método POST (Se envía a través del body del HTTP Request. No aparece en la URL)
-	$name = mysqli_real_escape_string($mysqli, $_POST['name']);
-	$surname = mysqli_real_escape_string($mysqli, $_POST['surname']);
-	$age = mysqli_real_escape_string($mysqli, $_POST['age']);
+	$name = $mysqli->real_escape_string($_POST['name']);
+	$surname = $mysqli->real_escape_string($_POST['surname']);
+	$age = $mysqli->real_escape_string($_POST['age']);
 
 	echo "Bloque2\n";	
 /*Con mysqli_real_scape_string protege caracteres especiales en una cadena para ser usada en una sentencia SQL.
 Esta función es usada para crear una cadena SQL legal que se puede usar en una sentencia SQL. 
-Los caracteres codificados son NUL (ASCII 0), \n, \r, \, ', ", y Control-Z.*/
+Los caracteres codificados son NUL (ASCII 0), \n, \r, \, ', ", y Control-Z.
+Ejemplo:
+Entrada sin escapar: "O'Reilly" contiene una comilla simple (').
+Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando que la comilla se interprete como el fin de una cadena en SQL.
+*/
 
 //Comprueba si existen campos vacíos
 	if(empty($name) || empty($age) || empty($surname)) 
@@ -61,8 +65,9 @@ Los caracteres codificados son NUL (ASCII 0), \n, \r, \, ', ", y Control-Z.*/
 	} //fin si
 	else 
 	{
-//Ejecuta una sentencia SQL. En este caso el alta de un registro de la BD.	
-		$result = mysqli_query($mysqli, "INSERT INTO users (name, surname, age) VALUES ('$name', '$surname', '$age')");	
+//Ejecuta una sentencia SQL. Inserta (da de alta) el nuevo registro: insert.
+		$result = $mysqli->query("INSERT INTO empleados (nombre, apellido, edad) VALUES ('$name', '$surname', '$age')");	
+
 		echo "Bloque3\n";
 //		echo "<div>Datos añadidos correctamente</div>";
 		echo "<a href='index.php'>Ver resultado</a>";
@@ -70,7 +75,8 @@ Los caracteres codificados son NUL (ASCII 0), \n, \r, \, ', ", y Control-Z.*/
 }
 
 //Cierra la conexión
-mysqli_close($mysqli);
+$mysqli->close();
+
 ?>
 
 	</main>
