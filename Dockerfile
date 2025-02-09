@@ -1,5 +1,5 @@
 # Indica cuál es la imagen que vamos a utilizar como punto de partida para generar la nueva imagen
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 # FROM ubuntu:latest
 
 # Con la opción "noninteractive" evita tener que introducir valores de configuración de forma manual durante la instalación de algunos paquetes
