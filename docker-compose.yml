@@ -28,7 +28,7 @@ services:
   mariadb:
     image: mariadb
     ports:
-      - 3306:3306
+      - 3307:3306
     environment: 
 # El acceso a las variables de entorno puede ser de dos maneras: $MARIADB_DATABASE ó ${MARIADB_DATABASE} utilizan el valor de la variable MARIADB_DATABASE definida en .env
       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}

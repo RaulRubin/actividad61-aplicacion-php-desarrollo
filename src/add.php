@@ -59,25 +59,25 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 			echo "<div>Campo puesto vacío.</div>";
 		}
 //Enlace a la página anterior
+		//Se cierra la conexión
+		$mysqli->close();
 		echo "<a href='javascript:self.history.back();'>Volver atras</a>";
 	} //fin si
-	else 
+	else //Sino existen campos de formulario vacíos se procede al alta del nuevo registro
 	{
 //Se ejecuta una sentencia SQL. Inserta (da de alta) el nuevo registro: insert.
 		$result = $mysqli->query("INSERT INTO empleados (nombre, apellido, edad, puesto) VALUES ('$name', '$surname', '$age', '$job')");	
-		echo "<div>Datos añadidos correctamente</div>";
+		//Se cierra la conexión
+		$mysqli->close();
+		echo "<div>Registro añadido correctamente</div>";
 		echo "<a href='index.php'>Ver resultado</a>";
 	}//fin sino
 }
 
-//Se cierra la conexión
-$mysqli->close();
-
 ?>
-
 	</main>
 	<footer>
-    Created by the IES Miguel Herrero team &copy; 2025
+    	Created by the IES Miguel Herrero team &copy; 2025
   	</footer>
 </div>
 </body>

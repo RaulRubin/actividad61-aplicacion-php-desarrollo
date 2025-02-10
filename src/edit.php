@@ -49,7 +49,6 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 }//fin si
 ?>
 
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -71,7 +70,7 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 	<h2>Modificación trabajador/a</h2>
 
 
-	<?php
+<?php
 
 /* Se obtiene el id del dato a modificar a partir de la URL. Este tipo de datos se accede utilizando el método: GET*/
 $id = $_GET['id'];
@@ -134,7 +133,7 @@ Esta misma página (edit.php), además de editar el formulario, se encargará de
 
 	</main>	
 	<footer>
-	Created by the IES Miguel Herrero team &copy; 2024
+		Created by the IES Miguel Herrero team &copy; 2024
   	</footer>
 </div>
 </body>

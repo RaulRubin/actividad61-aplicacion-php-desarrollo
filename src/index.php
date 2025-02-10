@@ -94,7 +94,7 @@ Este forma de pasar el dato se conoce como: método GET*/
 	</table>
 	</main>
 	<footer>
-    Created by the IES Miguel Herrero team &copy; 2025
+    	Created by the IES Miguel Herrero team &copy; 2025
   	</footer>
 </div>
 </body>

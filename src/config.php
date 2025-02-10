@@ -16,10 +16,12 @@ define('DB_PASSWORD', getenv('DB_PASSWORD'));
 /*
 Otra alternativa es definir directamente los parámetros de conexión:
 define('DB_HOST', 'mariadb');
+define('DB_PORT', '3307');
 define('DB_NAME', 'electroshop');
 define('DB_USER', 'usuario');
 define('DB_PASSWORD', 'usuario@1');
 */
+
 
 //Abre una nueva conexión al servidor MySQL/MariaDB
 $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
