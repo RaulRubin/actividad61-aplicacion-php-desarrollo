@@ -26,7 +26,7 @@ include_once("config.php");
 		<li><a href="index.php">Inicio</a></li>
 		<li><a href="add.html">Alta</a></li>
 	</ul>
-	<h2>Recursos humanos</h2>
+	<h2>Trabajadores/as</h2>
 	<table border="1">
 	<thead>
 		<tr>
@@ -71,6 +71,9 @@ $fila["edad"] = "25";
 $fila["puesto"] = "Contable";
 */
 
+//Comprobamos si el nº de fila/registros es mayor que 0
+ if ($resultado->num_rows > 0) {
+
 /* A través de la estructura repetitiva "while" se recorre la "tabla" $resultados almacenando cada línea en el array asociativo $fila.
 El bucle finaliza cuando se llegue a la última línea (o registro) de la tabla $resultado. A medida que avanza se va generando la tabla HTML con todos los registros y campos de la tabla empleados*/
 
@@ -88,7 +91,7 @@ Este forma de pasar el dato se conoce como: método GET*/
 		echo "</td>";
 		echo "</tr>\n";
 	}//fin mientras
-
+ }//fin si
 ?>
 	</tbdody>
 	</table>
