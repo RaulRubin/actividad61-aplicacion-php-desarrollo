@@ -9,7 +9,7 @@ include_once("config.php");
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Alta trabajador/a</title>
+	<title>Alta empleado/a</title>
 </head>
 <body>
 <div>
@@ -20,14 +20,22 @@ include_once("config.php");
 	<main>
 
 <?php
-/* se Comprueba si se ha llegado a esta página PHP a través del formulario de altas. 
+/* Se Comprueba si se ha llegado a esta página PHP a través del formulario de altas. 
 Para ello se comprueba la variable de formulario: "inserta" enviada al pulsar el botón Agregar.
 Los datos del formulario se acceden por el método: POST
 */
 
 if(isset($_POST['inserta'])) 
 {
-//Se obtienen los datos (name, surname, age y job) a partir del formulario de alta por el método POST (Se envía a través del body del HTTP Request. No aparecen en la URL)
+/*Se obtienen los datos del empleado (nombre, apellido, edad y puesto) a partir del formulario de alta (name, surname, age y job)  por el método POST.
+Se envía a través del body del HTTP Request. No aparecen en la URL como era el caso del otro método de envío de datos: GET
+Recuerda que   existen dos métodos con los que el navegador puede enviar información al servidor:
+1.- Método HTTP GET. Información se envía de forma visible. A través de la URL (header HTTP Request )
+En PHP los datos se administran con el array asociativo $_GET. En nuestro caso el dato del empleado se obiene a través de la clave: $_GET['idempleado']
+2.- Método HTTP POST. Información se envía de forma no visible. A través del cuerpo del HTTP Request 
+PHP proporciona el array asociativo $_POST para acceder a la información enviada.
+*/
+
 	$name = $mysqli->real_escape_string($_POST['name']);
 	$surname = $mysqli->real_escape_string($_POST['surname']);
 	$age = $mysqli->real_escape_string($_POST['age']);

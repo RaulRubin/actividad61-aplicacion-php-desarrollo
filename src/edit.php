@@ -3,12 +3,23 @@
 include_once("config.php");
 
 /*Se comprueba si se ha llegado a esta página PHP a través del formulario de edición. 
-Para ello se comprueba la variable de formulario: "modifica" enviada al pulsar el botón Guardar.
+Para ello se comprueba la variable de formulario: "modifica" enviada al pulsar el botón Guardar de dicho formulario.
 Los datos del formulario se acceden por el método: POST
 */
+
+
+
 if(isset($_POST['modifica'])) {
-//Se obtienen los datos (id, name, surname, age y job) a partir del formulario de alta por el método POST (Se envía a través del body del HTTP Request. No aparecen en la URL)
-	$id = $mysqli->real_escape_string($_POST['id']);
+/*Se obtienen los datos del empleado (id, nombre, apellido, edad y puesto) a partir del formulario de edición (idempleado, name, surname, age y job)  por el método POST.
+Se envía a través del body del HTTP Request. No aparecen en la URL como era el caso del otro método de envío de datos: GET
+Recuerda que   existen dos métodos con los que el navegador puede enviar información al servidor:
+1.- Método HTTP GET. Información se envía de forma visible. A través de la URL (header HTTP Request )
+En PHP los datos se administran con el array asociativo $_GET. En nuestro caso el dato del empleado se obiene a través de la clave: $_GET['idempleado']
+2.- Método HTTP POST. Información se envía de forma no visible. A través del cuerpo del HTTP Request 
+PHP proporciona el array asociativo $_POST para acceder a la información enviada.
+*/
+
+	$idempleado = $mysqli->real_escape_string($_POST['idempleado']);
 	$name = $mysqli->real_escape_string($_POST['name']);
 	$surname = $mysqli->real_escape_string($_POST['surname']);
 	$age = $mysqli->real_escape_string($_POST['age']);
@@ -42,7 +53,7 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 	else //Se realiza la modificación de un registro de la BD. 
 	{
 		//Se actualiza el registro a modificar: update
-		$mysqli->query("UPDATE empleados SET nombre = '$name', apellido = '$surname',  edad = '$age', puesto = '$job' WHERE id = $id");
+		$mysqli->query("UPDATE empleados SET nombre = '$name', apellido = '$surname',  edad = '$age', puesto = '$job' WHERE id = $idempleado");
 		$mysqli->close();
 		header("Location: index.php");
 	}// fin sino
@@ -67,18 +78,25 @@ Escapado con mysqli_real_escape_string(): Se convierte en "O\'Reilly", evitando 
 		<li><a href="index.php" >Inicio</a></li>
 		<li><a href="add.html" >Alta</a></li>
 	</ul>
-	<h2>Modificación trabajador/a</h2>
+	<h2>Modificación empleado/a</h2>
 
 
 <?php
 
-/* Se obtiene el id del dato a modificar a partir de la URL. Este tipo de datos se accede utilizando el método: GET*/
-$id = $_GET['id'];
 
-$id = $mysqli->real_escape_string($id);
+/*Obtiene el id del registro del empleado a modificar, idempleado, a partir de su URL. Este tipo de datos se accede utilizando el método: GET*/
+
+//Recoge el id del empleado a modificar a través de la clave idempleado del array asociativo $_GET y lo almacena en la variable idempleado
+$idempleado = $_GET['idempleado'];
+
+//Con mysqli_real_scape_string protege caracteres especiales en una cadena para ser usada en una sentencia SQL.
+$idempleado = $mysqli->real_escape_string($idempleado);
+
+
+
 
 //Se selecciona el registro a modificar: select
-$resultado = $mysqli->query("SELECT apellido, nombre, edad, puesto FROM empleados WHERE id = $id");
+$resultado = $mysqli->query("SELECT apellido, nombre, edad, puesto FROM empleados WHERE id = $idempleado");
 
 //Se extrae el registro y lo guarda en el array $fila
 //Nota: También se puede utilizar el método fetch_assoc de la siguiente manera: $fila = $resultado->fetch_assoc();
@@ -125,7 +143,7 @@ Esta misma página (edit.php), además de editar el formulario, se encargará de
 		</div>
 
 		<div >
-			<input type="hidden" name="id" value=<?php echo $id;?>>
+			<input type="hidden" name="idempleado" value=<?php echo $idempleado;?>>
 			<input type="submit" name="modifica" value="Guardar">
 			<input type="button" value="Cancelar" onclick="location.href='index.php'">
 		</div>
