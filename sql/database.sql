@@ -18,7 +18,10 @@ VALUES ('Humano', 'Mario', 1981, 'Donkey Kong', 2024, 'Mario y Luigi Conexion Fr
 ('Toad', 'Toad', 1985, 'Super Mario Bros.', 2024, 'Mario y Luigi Conexion Fraternal'),
 ('Princesa', 'Peach', 1985, 'Super Mario Bros.', 2024, 'Mario y Luigi Conexion Fraternal'),
 ('Dinosaurio', 'Yoshi', 1990, 'Super Mario World', 2024, 'Mario y Luigi Conexion Fraternal'),
-('Fantasma', 'Boo', 1988, 'Super Mario Bros. 3', 2024, 'Mario y Luigi Conexion Fraternal');
+('Fantasma', 'Boo', 1988, 'Super Mario Bros. 3', 2024, 'Mario y Luigi Conexion Fraternal'),
+('Humano', 'Pauline', 1981, 'Donkey Kong', 2023, 'Super Mario Party Jamboree'),
+('Koopa', 'Bowser Jr.', 2002, 'Super Mario Sunshine', 2024, 'Mario y Luigi Conexion Fraternal'),
+('Dinosaurio', 'Birdo', 1988, 'Super Mario Bros. 2', 2023, 'Mario y Luigi Conexion Fraternal');
 
 
 
