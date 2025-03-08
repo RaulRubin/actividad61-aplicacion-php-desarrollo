@@ -1,17 +1,25 @@
-CREATE TABLE empleados (
-  id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-  apellido VARCHAR(100) NOT NULL,
-  nombre VARCHAR(100) NOT NULL,
-  edad INT UNSIGNED NOT NULL,
-  puesto VARCHAR(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE DATABASE IF NOT EXISTS actividad61RRL;
+USE actividad61RRL;
 
-INSERT INTO empleados (apellido, nombre, edad, puesto) VALUES('Coloma', 'Javier', 25, 'Contable');
-INSERT INTO empleados (apellido, nombre, edad, puesto) VALUES('Oviedo', 'Carmen', 34, 'Administrativo');
-INSERT INTO empleados (apellido, nombre, edad, puesto) VALUES('Vargas', 'Pascual', 19, 'Dependiente');
-INSERT INTO empleados (apellido, nombre, edad, puesto) VALUES('Donoso', 'Maria', 45, 'Gerente');
-INSERT INTO empleados (apellido, nombre, edad, puesto) VALUES('Celis', 'Manuel', 56, 'Dependiente');
-INSERT INTO empleados (apellido, nombre, edad, puesto) VALUES('Palencia', 'Jana', 31, 'Dependiente');
-INSERT INTO empleados (apellido, nombre, edad, puesto) VALUES('Zamanillo', 'Pedro', 63, 'Repartidor');
+CREATE TABLE Super_Mario (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  raza VARCHAR(100),
+  nombre VARCHAR(100),
+  primera_aparicion YEAR,
+  primer_juego VARCHAR(150),
+  ultima_aparicion YEAR,
+  ultimo_juego VARCHAR(150)
+);
+
+INSERT INTO Super_Mario (raza, nombre, primera_aparicion, primer_juego, ultima_aparicion, ultimo_juego) 
+VALUES ('Humano', 'Mario', 1981, 'Donkey Kong', 2024, 'Mario y Luigi Conexion Fraternal'),
+('Humano', 'Luigi', 1983, 'Mario Bros.', 2024, 'Mario y Luigi Conexion Fraternal'),
+('Koopa', 'Bowser', 1985, 'Super Mario Bros.', 2024, 'Mario y Luigi Conexion Fraternal'),
+('Toad', 'Toad', 1985, 'Super Mario Bros.', 2024, 'Mario y Luigi Conexion Fraternal'),
+('Princesa', 'Peach', 1985, 'Super Mario Bros.', 2024, 'Mario y Luigi Conexion Fraternal'),
+('Dinosaurio', 'Yoshi', 1990, 'Super Mario World', 2024, 'Mario y Luigi Conexion Fraternal'),
+('Fantasma', 'Boo', 1988, 'Super Mario Bros. 3', 2024, 'Mario y Luigi Conexion Fraternal');
+
+
 
 

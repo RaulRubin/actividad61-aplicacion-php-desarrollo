@@ -3,46 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alta empleado/a</title>
+    <title>Alta Personaje</title>
 </head>
 <body>
 <div>
 	<header>
-		<h1>ELECTROSHOP S.L.</h1>
+		<h1>Super_Mario_Tablas</h1>
 	</header>
 	<main>				
 	<ul>
 		<li><a href="index.html">Inicio</a></li>
-		<li><a href="add.html">Alta</a></li>
+		<li><a href="add.html">Alta Personajes</a></li>
 	</ul>
-	<h2>Alta empleado/a</h2>
+	<h2>Alta Personaje</h2>
 <!--Formulario de alta. Al hacer click en el botón Agregar, llama a la página: add.php-->
 	<form action="index.html" method="post">
 		<div>
+			<label for="name">Raza</label>
+			<input type="text" name="raza" id="raza" placeholder="nombre" required>
+		</div>
+
+		<div>
 			<label for="name">Nombre</label>
-			<input type="text" name="name" id="name" placeholder="nombre" required>
+			<input type="text" name="nombre" id="nombre" placeholder="nombre" required>
 		</div>
 
 		<div>
-			<label for="surname">Apellido</label>
-			<input type="text" name="surname" id="surname" placeholder="apellido" required>
+			<label for="name">Primera Aparicion</label>
+			<input type="text" name="primera_aparicion" id="primera_aparicion" placeholder="nombre" required>
 		</div>
 
 		<div>
-			<label for="age">Edad</label>
-			<input type="number" name="age" id="age" placeholder="edad" required>
+			<label for="name">Primer Juego</label>
+			<input type="text" name="primer_juego" id="primer_juego" placeholder="nombre" required>
 		</div>
 
 		<div>
-			<label for="job">Puesto</label>
-			<select name="job" id="job" placeholder="puesto" required>
-				<option value="" disabled selected>Seleccione un puesto</option>
-				<option value="Administrativo">Administrativo</option>
-				<option value="Contable">Contable</option>
-				<option value="Dependiente">Dependiente</option>
-				<option value="Gerente">Gerente</option>
-				<option value="Repartidor">Repartidor</option>
-			</select>	
+			<label for="name">Ultima Aparicion</label>
+			<input type="text" name="ultima_aparicion" id="primera_aparicion" placeholder="nombre" required>
+		</div>
+
+		<div>
+			<label for="name">Ultimo Juego</label>
+			<input type="text" name="ultimo_juego" id="ultimo_juego" placeholder="nombre" required>
 		</div>
 
 		<div>

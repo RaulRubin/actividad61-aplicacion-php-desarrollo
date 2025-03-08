@@ -16,9 +16,9 @@ services:
 # Las variables de entorno tienen el mismo nombre que el servicio MARIADB. Se le puede poner cualquier nombre
     environment: 
       - MARIADB_HOST=mariadb
-      - MARIADB_DATABASE=${DATABASE}
-      - MARIADB_USER=${USER}
-      - MARIADB_PASSWORD=${PASSWORD}
+      - MARIADB_DATABASE=actividad61RRL
+      - MARIADB_USER=usuarioRRL
+      - MARIADB_PASSWORD=RaulRubinLazcano@2004
     volumes:
 # Uno de tipo volumen y otro de tip "bind-mount"
       - ./src:/var/www/html 
@@ -34,10 +34,10 @@ services:
       - 3307:3306
     environment: 
 # El acceso a las variables de entorno puede ser de dos maneras: $MARIADB_DATABASE ó ${MARIADB_DATABASE} utilizan el valor de la variable MARIADB_DATABASE definida en .env
-      - MARIADB_ROOT_PASSWORD=${ROOT_PASSWORD}
-      - MARIADB_DATABASE=${DATABASE}
-      - MARIADB_USER=${USER}
-      - MARIADB_PASSWORD=${PASSWORD}
+      - MARIADB_ROOT_PASSWORD=RaulRubinLazcano@2004
+      - MARIADB_DATABASE=actividad61RRL
+      - MARIADB_USER=usuarioRRL
+      - MARIADB_PASSWORD=RaulRubinLazcano@2004
       - LANG=C.UTF-8
     volumes:
 # Uno de tipo volumen y otro de tip "bind-mount"

@@ -1,109 +1,125 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">	
-	<title>Electroshop S.L.</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Super Mario Database</title>
 </head>
 <body>
 <div>
-	<header>
-		<h1>ELECTROSHOP S.L.</h1>
-	</header>
+    <header>
+        <h1>Super Mario Database</h1>
+    </header>
 
-	<main>
-	<ul>
-		<li><a href="index.html">Inicio</a></li>
-		<li><a href="add.html">Alta</a></li>
-	</ul>
-	<h2>Empleados/as</h2>
-	<table border="1">
-	<thead>
-		<tr>
-			<th>Nombre</th>
-			<th>Apellido</th>
-			<th>Edad</th>
-			<th>Puesto</th>
-			<th>Acciones</th>
-		</tr>
-	</thead>
-	<tbdody>
-    <tr>
-		<td>Manuel</td>
-		<td>Celis</td>
-		<td>56</td>
-		<td>Dependiente</td>
-		<td>
-		<a href="edit.html">Edición</a>
-		<a href="delete.html" onClick="return confirm('¿Está segur@ que desea eliminar el empleado/a?')" >Baja</a></td>
-		</td>
-	</tr>
-	<tr>
-		<td>Javier</td>
-		<td>Coloma</td>
-		<td>25</td>
-		<td>Contable</td>
-		<td>
-		<a href="edit.html">Edición</a>
-		<a href="delete.html" onClick="return confirm('¿Está segur@ que desea eliminar el trabajador/a?')" >Baja</a></td>
-		</td>
-	</tr>
-	<tr>
-		<td>Maria</td>
-		<td>Donoso</td>
-		<td>45</td>
-		<td>Gerente</td>
-		<td>
-		<a href="edit.html">Edición</a>
-		<a href="delete.html" onClick="return confirm('¿Está segur@ que desea eliminar el trabajador/a?')" >Baja</a></td>
-		</td>
-	</tr>
-	<tr>
-		<td>Carmen</td>
-		<td>Oviedo</td>
-		<td>34</td>
-		<td>Administrativo</td>
-		<td>
-		<a href="edit.html">Edición</a>
-		<a href="delete.html" onClick="return confirm('¿Está segur@ que desea eliminar el trabajador/a?')" >Baja</a></td>
-		</td>
-	</tr>
-	<tr>
-		<td>Jana</td>
-		<td>Palencia</td>
-		<td>31</td>
-		<td>Dependiente</td>
-		<td>
-		<a href="edit.html">Edición</a>
-		<a href="delete.html" onClick="return confirm('¿Está segur@ que desea eliminar el trabajador/a?')" >Baja</a></td>
-		</td>
-	</tr>
-	<tr>
-		<td>Pascual</td>
-		<td>Vargas</td>
-		<td>19</td>
-		<td>Dependiente</td>
-		<td>
-		<a href="edit.html">Edición</a>
-		<a href="delete.html" onClick="return confirm('¿Está segur@ que desea eliminar el trabajador/a?')" >Baja</a></td>
-		</td>
-	</tr>
-	<tr>
-		<td>Pedro</td>
-		<td>Zamanillo</td>
-		<td>63</td>
-		<td>Repartidor</td>
-		<td>
-		<a href="edit.html">Edición</a>
-		<a href="delete.html" onClick="return confirm('¿Está segur@ que desea eliminar el trabajador/a?')" >Baja</a></td>
-		</td>
-	</tr>
-	</tbdody>
-	</table>
-	</main>
-	<footer>
-    Created by the IES Miguel Herrero team &copy; 2025
-  	</footer>
+    <main>
+    <ul>
+        <li><a href="index.php">Inicio</a></li>
+        <li><a href="add.html">Alta</a></li>
+    </ul>
+    <h2>Personajes</h2>
+    <table border="1">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Raza</th>
+            <th>Primera Aparición</th>
+            <th>Primer Juego</th>
+            <th>Última Aparición</th>
+            <th>Último Juego</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Mario</td>
+            <td>Humano</td>
+            <td>1981</td>
+            <td>Donkey Kong</td>
+            <td>2024</td>
+            <td>Mario y Luigi Conexion Fraternal</td>
+            <td>
+                <a href='edit.php?id=1'>Edición</a>
+                <a href='delete.php?id=1' onClick='return confirm("¿Está segur@ que desea eliminar este personaje?")'>Baja</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Luigi</td>
+            <td>Humano</td>
+            <td>1983</td>
+            <td>Mario Bros.</td>
+            <td>2024</td>
+            <td>Mario y Luigi Conexion Fraternal</td>
+            <td>
+                <a href='edit.php?id=2'>Edición</a>
+                <a href='delete.php?id=2' onClick='return confirm("¿Está segur@ que desea eliminar este personaje?")'>Baja</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Bowser</td>
+            <td>Koopa</td>
+            <td>1985</td>
+            <td>Super Mario Bros.</td>
+            <td>2024</td>
+            <td>Mario y Luigi Conexion Fraternal</td>
+            <td>
+                <a href='edit.php?id=3'>Edición</a>
+                <a href='delete.php?id=3' onClick='return confirm("¿Está segur@ que desea eliminar este personaje?")'>Baja</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Toad</td>
+            <td>Toad</td>
+            <td>1985</td>
+            <td>Super Mario Bros.</td>
+            <td>2024</td>
+            <td>Mario y Luigi Conexion Fraternal</td>
+            <td>
+                <a href='edit.php?id=4'>Edición</a>
+                <a href='delete.php?id=4' onClick='return confirm("¿Está segur@ que desea eliminar este personaje?")'>Baja</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Peach</td>
+            <td>Princesa</td>
+            <td>1985</td>
+            <td>Super Mario Bros.</td>
+            <td>2024</td>
+            <td>Mario y Luigi Conexion Fraternal</td>
+            <td>
+                <a href='edit.php?id=5'>Edición</a>
+                <a href='delete.php?id=5' onClick='return confirm("¿Está segur@ que desea eliminar este personaje?")'>Baja</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Yoshi</td>
+            <td>Dinosaurio</td>
+            <td>1990</td>
+            <td>Super Mario World</td>
+            <td>2024</td>
+            <td>Mario y Luigi Conexion Fraternal</td>
+            <td>
+                <a href='edit.php?id=6'>Edición</a>
+                <a href='delete.php?id=6' onClick='return confirm("¿Está segur@ que desea eliminar este personaje?")'>Baja</a>
+            </td>
+        </tr>
+        <tr>
+            <td>Boo</td>
+            <td>Fantasma</td>
+            <td>1988</td>
+            <td>Super Mario Bros. 3</td>
+            <td>2024</td>
+            <td>Mario y Luigi Conexion Fraternal</td>
+            <td>
+                <a href='edit.php?id=7'>Edición</a>
+                <a href='delete.php?id=7' onClick='return confirm("¿Está segur@ que desea eliminar este personaje?")'>Baja</a>
+            </td>
+        </tr>
+    </tbody>
+    </table>
+    </main>
+    <footer>
+        Created by the Super Mario Team &copy; 2025
+    </footer>
 </div>
 </body>
 </html>

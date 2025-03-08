@@ -30,7 +30,7 @@ RUN apt-get update \
 # En este caso le asignamos unos valores por defecto: "mariadb", "electroshop", "usuario", "usuario@1"
 
 ENV MARIADB_HOST mariadb
-ENV MARIADB_NAME electroshop
+ENV MARIADB_NAME actividad61RRL
 ENV MARIADB_USER usuario
 ENV MARIADB_PASSWORD usuario@1
 
